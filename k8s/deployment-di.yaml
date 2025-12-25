@@ -1,0 +1,6 @@
+containers:
+- name: di-webapp
+  image: diarkin/di-webapp:PLACEHOLDER
+  imagePullPolicy: Always
+  ports:
+  - containerPort: 5000
