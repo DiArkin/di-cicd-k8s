@@ -44,7 +44,7 @@ pipeline {
     stage("Deploy to Kubernetes") {
       steps {
         sh """
-          sed -i -E "s|^([[:space:]]*image:[[:space:]]*).*|\1diarkin/di-webapp:di-${BUILD_NUMBER}|" k8s/deployment-di.yaml
+          sed -i 's|di-PLACEHOLDER|di-${BUILD_NUMBER}|g' k8s/deployment-di.yaml
           kubectl apply -f k8s/
           kubectl rollout status deployment/di-webapp --timeout=180s
         """
