@@ -1,6 +1,20 @@
-containers:
-- name: di-webapp
-  image: diarkin/di-webapp:PLACEHOLDER
-  imagePullPolicy: Always
-  ports:
-  - containerPort: 5000
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: di-webapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: di-webapp
+  template:
+    metadata:
+      labels:
+        app: di-webapp
+    spec:
+      containers:
+        - name: di-webapp
+          image: diarkin/di-webapp:di-PLACEHOLDER
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
